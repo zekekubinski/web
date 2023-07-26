@@ -1,0 +1,154 @@
+<style>
+*{
+  margin:0;padding:0;
+  box-sizing: border-box;
+  text-transform: capitalize;
+}
+
+.container {
+  display:grid;
+  grid-template-columns: 2fr 1fr;
+  gap:15px;
+  align-items:flex-start;
+  padding: 5px 5%;
+}
+
+.container .main-video {
+ border-radius: 5px; 
+ padding:10px;
+}
+
+.container .main-video video {
+  width:100%;
+  border-radius: 5px;
+}
+
+.container .main-video .title {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.container .video-list {
+  border-radius: 5px;
+  height:400px;
+  overflow-y: scroll;
+}
+
+.container .video-list::-webkit-scrollbar {
+  width:7px;
+}
+
+.container .video-list::-webkit-scrollbar-track {
+  border-radius:50px;
+}
+
+.container .video-list::-webkit-scrollbar-thumb {
+  border-radius:50px;
+}
+
+.container .video-list .vid video {
+  width:100px;
+  border-radius:5px;
+}
+
+.container .video-list .vid {
+  display:flex;
+  align-items:center;
+  gap: 15px;
+  border-radius:5px;
+  margin:10px;
+  padding-10px;
+  border:1px solid rgba(0,0,0,.1);
+  cursor: pointer;
+}
+
+.container .video-list .vid:hover {
+  background: #eee;
+}
+
+.container .video-list .vid.active {
+  background: #8c8c8c;
+}
+
+.container .video-list .vid.active .title {
+  color:#fff;
+}
+
+.container .video-list .vid .title {
+}
+
+@media (max-width:991px) {
+  .container {
+   grid-template-columns: 1.5fr 1fr;
+   padding: 10px;
+  }
+}
+
+@media (max-width:768px) {
+  .container {
+   grid-template-columns: 1fr;
+  }
+}
+
+
+
+</style>
+
+
+<div class="container">
+
+  <div class="main-video">
+    <div class="video">
+      <video src="https://4944840.fs1.hubspotusercontent-na1.net/hubfs/4944840/Megan_Pre-Approval_Web.mp4" controls muted></video>
+      <span class="title" style="font-family:oswald; font-weight:bold; font-size:20px;">The Importance of Pre-Approvals</span>
+    </div>
+  </div>
+
+  <div class="video-list">
+    <div class="vid active">
+      <video src="https://4944840.fs1.hubspotusercontent-na1.net/hubfs/4944840/Megan_Pre-Approval_Web.mp4" muted></video>
+      <h3 class="title">The Importance of Pre-Approvals</h3>
+    </div>
+    <div class="vid">
+      <video src="https://4944840.fs1.hubspotusercontent-na1.net/hubfs/4944840/Megan_ClosingCosts_Web.mp4" muted></video>
+      <h3 class="title">What are Closing Costs?</h3>
+    </div>
+    <div class="vid">
+      <video src="https://4944840.fs1.hubspotusercontent-na1.net/hubfs/4944840/Megan_HECM_1280x720_2.mp4" muted></video>
+      <h3 class="title">What is a Reverse Mortgage?</h3>
+    </div>
+    <div class="vid">
+      <video src="https://4944840.fs1.hubspotusercontent-na1.net/hubfs/4944840/Megan_Renovation-Loans_1280x720_1.mp4" muted></video>
+      <h3 class="title">Utilizing Home Renovation Loans</h3>
+    </div>
+    <div class="vid">
+      <video src="https://4944840.fs1.hubspotusercontent-na1.net/hubfs/4944840/Megan_SONYMA-FHA-PLUS_Version-2_1280x720.mp4" muted></video>
+      <h3 class="title">The FHA SONYMA Plus Program</h3>
+    </div>
+    <div class="vid">
+      <video src="https://4944840.fs1.hubspotusercontent-na1.net/hubfs/4944840/Megan_Thinking-Of-Buying_Web.mp4" muted></video>
+      <h3 class="title">Thinking of Buying a Home?</h3>
+    </div>
+    <div class="vid">
+      <video src="https://4944840.fs1.hubspotusercontent-na1.net/hubfs/4944840/Megan_Refi_Web.mp4" muted></video>
+      <h3 class="title">Refinancing Your Mortgage</h3>
+    </div>
+
+  </div>
+
+</div><script>let listVideo = document.querySelectorAll('.video-list .vid');
+let mainVideo = document.querySelector('.main-video video');
+let title = document.querySelector('.main-video .title');
+listVideo.forEach(video =>{
+  video.onclick = () =>{
+    listVideo.forEach(vid => vid.classList.remove('active'));
+    video.classList.add('active');
+    if(video.classList.contains('active')){
+      let src = video.children[0].getAttribute('src');
+      mainVideo.src = src;
+      let text = video.children[1].innerHTML;
+      title.innerHTML = text;
+};
+};
+});
+</script>
